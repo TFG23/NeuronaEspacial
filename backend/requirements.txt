@@ -2,7 +2,9 @@ Pillow==9.5.0
 requests==2.28.2
 oauthlib
 requests_oauthlib
-numpy
-matplotlib
+numpy==1.24.3
+matplotlib==3.7.0
 sentinelhub
 python-dotenv
+gunicorn
+Flask

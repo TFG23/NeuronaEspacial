@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  reverse-proxy: # NGINX
+    image: nginx
+    container_name: reverse-proxy-container
+    volumes:
+      - ./nginx/nginx-conf.conf:/etc/nginx/nginx.conf
+    restart: always
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - 80:80 #Host:Container (Check nginx-conf.conf; container port is the same as what NGINX is listening to)
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
